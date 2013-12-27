@@ -7,7 +7,7 @@ group :development, :test do
 	gem 'sqlite3', '~> 1.3.7'
 	gem 'rspec-rails', '>= 2.14.0'
 end
-
+				
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -30,7 +30,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :test do
-	gem 'capybara', '~> 2.2.0'
+	gem 'capybara', '1.1.2'
 end
 
 group :production do 
