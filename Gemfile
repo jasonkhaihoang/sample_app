@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-group :development, :test do 
+group :development do 
 	gem 'sqlite3', '~> 1.3.7'
 	gem 'rspec-rails', '>= 2.14.0'
+	gem 'guard-rspec', '0.5.5'
 end
 				
 # Use SCSS for stylesheets
@@ -30,7 +31,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :test do
+	gem 'rspec-rails', '>= 2.14.0'
 	gem 'capybara', '1.1.2'
+	gem 'rb-fsevent', '~> 0.9', :require => false 
+	gem 'growl', '1.0.3'
+	gem 'spork-rails', '>= 4.0.0'
+  	gem 'spork', '>= 1.0rc0'
+  	gem 'guard-spork', :github => 'guard/guard-spork'
 end
 
 group :production do 
