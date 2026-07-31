@@ -55,7 +55,7 @@ No existing models — fresh workspace. No downstream consumers to assess.
 | Gate | Status | Timestamp (UTC) |
 | --- | --- | --- |
 | Intent | [x] | 2026-07-31 02:10 |
-| Design | [ ] | -- |
+| Design | [x] | 2026-07-31 02:10 |
 | Build | [ ] | -- |
 | Verify | [ ] | -- |
 | Publish | [ ] | -- |
@@ -76,5 +76,5 @@ No existing models — fresh workspace. No downstream consumers to assess.
 ## Approvals
 
 - [x] User approved intent -- `2026-07-31 02:10` (UTC)
-- [ ] User approved design -- `YYYY-MM-DD HH:MM` (UTC)
+- [x] User approved design -- `2026-07-31 02:10` (UTC)
 - [ ] User approved ship -- `YYYY-MM-DD HH:MM` (UTC)
