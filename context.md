@@ -13,3 +13,5 @@ Append one entry per term, as it surfaces (never pre-populate speculative terms)
 One or two sentences — what it means in this domain, and why it matters to a data product.
 _Avoid_: near-synonyms this domain has rejected, and why.
 -->
+
+**Order line-item events**: The source system emits one event per order line item, not per order. A single order's line items can arrive as separate events with different timestamps (minutes apart). Any order-level aggregation must group by order_id and sum across all its line items — a simple row count is not an order count.
