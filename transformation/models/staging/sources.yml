@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: orders
+    schema: main
+    tables:
+      - name: raw_order_line_items
+        description: "One row per order line-item event. A single order's line items can arrive as separate events minutes apart."
+        columns:
+          - name: event_id
+            description: Unique event identifier.
+          - name: order_id
+            description: Order identifier. Multiple events share the same order_id.
+          - name: line_item_id
+            description: Line item number within the order.
+          - name: product_id
+            description: Product identifier.
+          - name: quantity
+            description: Quantity ordered.
+          - name: unit_price
+            description: Price per unit.
+          - name: line_total
+            description: Line total (quantity × unit_price).
+          - name: event_timestamp
+            description: Timestamp when the line-item event was emitted.
+          - name: ingested_at
+            description: Timestamp when the event was ingested.

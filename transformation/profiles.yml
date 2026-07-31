@@ -1,0 +1,13 @@
+duckdb_local:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('VD_EPHM_DUCKDB_PATH') }}"
+      attach:
+        - path: "{{ env_var('VD_DOMAIN_DUCKDB_PATH') }}"
+          read_only: true
+          alias: domain_db
+    prod:
+      type: duckdb
+      path: "{{ env_var('VD_DOMAIN_DUCKDB_PATH') }}"
