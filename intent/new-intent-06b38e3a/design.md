@@ -1,3 +1,11 @@
 # Design
 
-This file is reserved for this intent. Replace this placeholder with the approved technical design.
+## Gate Ledger
+
+| Gate | Status | Timestamp (UTC) |
+| --- | --- | --- |
+| Intent | ✅ | 2026-07-31 02:10 |
+| Design | — | — |
+| Build | — | — |
+| Verify | — | — |
+| Publish | — | — |

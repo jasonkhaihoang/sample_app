@@ -39,4 +39,4 @@ DuckDB-local ephemeral sandbox (`$VD_EPHM_DUCKDB_PATH`), dbt models under `trans
 
 ## Approvals
 
-- [ ] User approved intent — `YYYY-MM-DD HH:MM` (UTC)
+- [x] User approved intent — `2026-07-31 02:10` (UTC)
