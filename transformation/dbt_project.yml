@@ -1,0 +1,15 @@
+name: 'duckdb_local'
+version: '1.0.0'
+config-version: 2
+
+profile: 'duckdb_local'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+models:
+  duckdb_local:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
