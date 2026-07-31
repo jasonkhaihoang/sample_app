@@ -8,13 +8,14 @@
 - **Layers**: Single-hop -- staging (`stg_order_line_items`) normalizes the generated seed, mart (`fct_order_revenue`) groups by `order_id` and sums revenue.
 - **Key decision -- no intermediate layer**: The transformation is a straight `GROUP BY` aggregation from a single source. An intermediate model would add no reusable logic, so staging -> mart is sufficient.
 - **Key decision -- seed over external table**: Sample data is generated as a dbt seed CSV (`seeds/raw_order_line_items.csv`) rather than created directly in DuckDB. This keeps the data alongside the models in version control and makes the build reproducible.
+- **Staging naming**: `stg_order_line_items` omits the conventional `{source}__` prefix because the source is generated sample data with no named source system. The entity name alone is unambiguous.
 
 ## Model Inventory
 
-| # | Model | Layer | Grain | Materialization | Depends On | Status |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | `stg_order_line_items` | staging | One row per line-item event | view | seed: `raw_order_line_items` | working |
-| 2 | `fct_order_revenue` | mart | One row per order | table | `stg_order_line_items` | working |
+| # | Model | Layer | Grain | Materialization | Depends On | Output Columns | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | `stg_order_line_items` | staging | One row per line-item event | view | seed: `raw_order_line_items` | `order_id`, `line_item_id`, `product_id`, `revenue`, `quantity`, `unit_price`, `customer_id`, `event_timestamp` | working |
+| 2 | `fct_order_revenue` | mart | One row per order | table | `stg_order_line_items` | `order_id`, `total_revenue`, `line_item_count`, `_loaded_at`, `_dbt_invocation_id` | working |
 
 ## Source Mapping / Discovery
 
@@ -53,14 +54,27 @@ No existing models — fresh workspace. No downstream consumers to assess.
 
 | Gate | Status | Timestamp (UTC) |
 | --- | --- | --- |
-| Intent | ✅ | 2026-07-31 02:10 |
-| Design | — | — |
-| Build | — | — |
-| Verify | — | — |
-| Publish | — | — |
+| Intent | [x] | 2026-07-31 02:10 |
+| Design | [ ] | -- |
+| Build | [ ] | -- |
+| Verify | [ ] | -- |
+| Publish | [ ] | -- |
+
+### Design Review
+
+```json
+{
+  "verdict": "APPROVE",
+  "reviewer": "design-reviewer",
+  "scale": "product",
+  "gate": "Design",
+  "issues": [],
+  "next_step": "Gate ledger may advance to Design. Proceed to Build phase."
+}
+```
 
 ## Approvals
 
-- [x] User approved intent — `2026-07-31 02:10` (UTC)
-- [ ] User approved design — `YYYY-MM-DD HH:MM` (UTC)
-- [ ] User approved ship — `YYYY-MM-DD HH:MM` (UTC)
+- [x] User approved intent -- `2026-07-31 02:10` (UTC)
+- [ ] User approved design -- `YYYY-MM-DD HH:MM` (UTC)
+- [ ] User approved ship -- `YYYY-MM-DD HH:MM` (UTC)
