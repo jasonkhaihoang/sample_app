@@ -22,8 +22,16 @@
 | golden-replay | `validating-against-baseline` | — | `skipped` — no baseline declared in design.md |
 | project-audit | manual audit (naming, descriptions, grain tests, control columns) | 0 | `pass` — all checks green |
 | dev-artifact scan | `grep dev_mode/add_limit/target-prod` | 0 | `pass` — no pinned hacks |
+| contract-enforcement | `dbt build --select +fct_order_revenue --target dev` | 0 | `pass` — 7/7 PASS, enforced contract validates all 8 `data_type` declarations |
 
-| contract-enforcement | `dbt build --select +fct_order_revenue --target dev` | 0 | `pass` — 7/7 PASS, enforced `contract: { enforced: true }` validates all 8 `data_type` declarations |
+## Ship gate results
+
+| Step | Command | Exit | Outcome |
+| --- | --- | --- | --- |
+| publishing-dbt-contracts | `dbt build --select +fct_order_revenue --target dev` | 0 | `pass` — greenfield, no breaking delta |
+| documenting-dbt-models | `dbt docs generate --target dev` | 0 | `pass` — catalog.json written |
+| push | `git push -u origin intent/new-intent-3c7422a9` | 0 | `pass` — pushed to origin, `a113f6c..48ac2ec` |
+| open PR | `gh pr create --base master` | 0 | `pass` — https://github.com/jasonkhaihoang/sample_app/pull/1 |
 
 ## Reviewer verdicts
 
@@ -46,3 +54,5 @@ Code-stage:
 ```
 
 ## Approvals
+
+- [x] User approved ship — 2026-07-31 09:19 UTC
