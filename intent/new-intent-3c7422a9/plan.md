@@ -32,4 +32,4 @@
 ## Execution evidence
 
 - [x] Task 1 Step 1: `dbt compile --select +fct_order_revenue --target dev` — exit 0 — `transformation/models/staging/stg_orders__order_line_items.sql`, `transformation/models/marts/fct_order_revenue.sql`
-- [x] Task 1 Step 2: `dbt build --select +fct_order_revenue --target dev` — exit 0 — 7/7 PASS (2 models, 5 tests) — 20 rows in `fct_order_revenue`, total_revenue $41,497.98
+- [x] Task 1 Step 2: `dbt build --select +fct_order_revenue --target dev` — exit 0 — 7/7 PASS (2 models, 5 tests) — enforced contract on `fct_order_revenue`, 20 rows, $41,497.98 total

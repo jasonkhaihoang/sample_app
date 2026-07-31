@@ -3,29 +3,39 @@ version: 2
 models:
   - name: fct_order_revenue
     description: "One row per order with total gross revenue aggregated from all line-item events. Grain: order_id."
+    contract:
+      enforced: true
     columns:
       - name: order_id
+        data_type: varchar
         description: Unique order identifier.
         tests:
           - not_null
           - unique
       - name: total_revenue
+        data_type: decimal(38,2)
         description: Gross revenue for the order — SUM of all line_item totals. No discounts, taxes, or returns are netted.
       - name: line_item_count
+        data_type: bigint
         description: Number of line items in the order.
       - name: first_event_at
+        data_type: timestamp
         description: Timestamp of the earliest line-item event for this order.
       - name: last_event_at
+        data_type: timestamp
         description: Timestamp of the latest line-item event for this order.
       - name: _loaded_at
+        data_type: timestamptz
         description: Timestamp when this row was loaded by dbt.
         tests:
           - not_null
       - name: _dbt_invocation_id
+        data_type: varchar
         description: dbt invocation UUID for the run that produced this row.
         tests:
           - not_null
       - name: _git_sha
+        data_type: varchar
         description: Git revision for the code that produced this row.
         tests:
           - not_null
