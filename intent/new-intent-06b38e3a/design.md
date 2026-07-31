@@ -40,10 +40,10 @@ No existing models — fresh workspace. No downstream consumers to assess.
 
 ## Build Plan
 
-- `01-generate-sample-data` — phase: Build — goal: Create seed CSV with representative order line-item events — skill: `generating-dbt-model` — status: working — evidence:
-- `02-generate-staging-model` — phase: Build — goal: Generate `stg_order_line_items` staging model — skill: `generating-dbt-model` — status: working — evidence:
-- `03-generate-mart-model` — phase: Build — goal: Generate `fct_order_revenue` mart model — skill: `generating-dbt-model` — status: working — evidence:
-- `04-sandbox-run` — phase: Build — goal: Run `dbt build` in the DuckDB sandbox — skill: `running-dbt-in-sandbox` — status: working — evidence:
+- `01-generate-sample-data` — phase: Build — goal: Create seed CSV with representative order line-item events — skill: `generating-dbt-model` — status: done — evidence: `dbt compile --select stg_order_line_items fct_order_revenue` exit 0; `transformation/seeds/raw_order_line_items.csv` (6 rows, 3 orders)
+- `02-generate-staging-model` — phase: Build — goal: Generate `stg_order_line_items` staging model — skill: `generating-dbt-model` — status: done — evidence: `dbt compile --select stg_order_line_items` exit 0; `transformation/models/staging/stg_order_line_items.sql`, `transformation/models/staging/schema.yml`
+- `03-generate-mart-model` — phase: Build — goal: Generate `fct_order_revenue` mart model — skill: `generating-dbt-model` — status: done — evidence: `dbt compile --select fct_order_revenue` exit 0; `transformation/models/marts/fct_order_revenue.sql`, `transformation/models/marts/schema.yml`
+- `04-sandbox-run` — phase: Build — goal: Run `dbt build` in the DuckDB sandbox — skill: `running-dbt-in-sandbox` — status: done — evidence: `dbt build --select stg_order_line_items fct_order_revenue --target dev` exit 0 (12/12 PASS); fct_order_revenue: 3 rows, revenue verified
 - `05-profile-and-validate` — phase: Verify — goal: Profile landed data and validate row counts — skill: `profiling-source-data` — status: working — evidence:
 - `06-dbt-tests` — phase: Verify — goal: Run dbt data tests (uniqueness, not-null) — skill: `dbt-unit-testing` — status: working — evidence:
 - `07-evaluate-project` — phase: Verify — goal: Run dbt_project_evaluator checks — skill: `evaluating-dbt-project` — status: working — evidence:
@@ -56,7 +56,7 @@ No existing models — fresh workspace. No downstream consumers to assess.
 | --- | --- | --- |
 | Intent | [x] | 2026-07-31 02:10 |
 | Design | [x] | 2026-07-31 02:10 |
-| Build | [ ] | -- |
+| Build | [x] | 2026-07-31 02:10 |
 | Verify | [ ] | -- |
 | Publish | [ ] | -- |
 

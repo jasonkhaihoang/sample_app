@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_order_line_items
+    description: Staging model for raw order line-item events. One row per event, with explicit type casts.
+    columns:
+      - name: order_id
+        description: Parent order identifier.
+        tests:
+          - not_null
+      - name: line_item_id
+        description: Line item number within the order.
+        tests:
+          - not_null
+      - name: product_id
+        description: Product SKU.
+      - name: revenue
+        description: Line-item revenue in dollars.
+      - name: quantity
+        description: Units sold for this line item.
+      - name: unit_price
+        description: Price per unit in dollars.
+      - name: customer_id
+        description: Customer who placed the order.
+      - name: event_timestamp
+        description: Timestamp when the line-item event was emitted.

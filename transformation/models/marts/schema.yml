@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: fct_order_revenue
+    description: Revenue per order. One row per order with total revenue summed across all line items. Handles late-arriving line-item events by aggregating on order_id rather than assuming one row per order in the source.
+    columns:
+      - name: order_id
+        description: Order identifier. Unique per row.
+        tests:
+          - not_null
+          - unique
+      - name: total_revenue
+        description: Sum of line-item revenue for this order.
+        tests:
+          - not_null
+      - name: line_item_count
+        description: Number of line items in this order.
+        tests:
+          - not_null
+      - name: _loaded_at
+        description: Timestamp when this row was materialized by dbt.
+        tests:
+          - not_null
+      - name: _dbt_invocation_id
+        description: dbt invocation UUID for the run that produced this row.
+        tests:
+          - not_null
+      - name: _git_sha
+        description: Git revision for the code that produced this row.
+        tests:
+          - not_null
