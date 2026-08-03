@@ -1,0 +1,4 @@
+[sources.legacy_billing]
+connector = "filesystem"
+bucket_url = "file:///workspace/data"
+file_glob = "*.csv"
