@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: orders
-    schema: main
+    schema: main_main
     tables:
       - name: raw_order_line_items
         description: "One row per order line-item event. A single order's line items can arrive as separate events minutes apart."

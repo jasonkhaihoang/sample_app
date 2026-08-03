@@ -7,13 +7,13 @@ models:
       enforced: true
     columns:
       - name: order_id
-        data_type: varchar
+        data_type: integer
         description: Unique order identifier.
         tests:
           - not_null
           - unique
       - name: total_revenue
-        data_type: decimal(38,2)
+        data_type: double
         description: Gross revenue for the order — SUM of all line_item totals. No discounts, taxes, or returns are netted.
       - name: line_item_count
         data_type: bigint

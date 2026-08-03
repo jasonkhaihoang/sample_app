@@ -5,7 +5,12 @@ config-version: 2
 profile: 'duckdb_local'
 
 model-paths: ["models"]
+seed-paths: ["seeds"]
 macro-paths: ["macros"]
+
+seeds:
+  duckdb_local:
+    +schema: main
 
 models:
   duckdb_local:
