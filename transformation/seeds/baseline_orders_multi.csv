@@ -1,0 +1,9 @@
+order_id,total,order_date,status
+1,100.00,2026-01-05,shipped
+2,250.50,2026-01-10,shipped
+3,75.25,2026-02-01,shipped
+4,12.00,2026-02-15,cancelled
+5,300.00,2026-03-01,shipped
+6,45.00,2026-03-10,shipped
+7,88.00,2026-03-15,shipped
+8,42.00,2026-03-20,shipped
