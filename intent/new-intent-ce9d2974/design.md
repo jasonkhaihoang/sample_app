@@ -64,3 +64,5 @@ schedules:
 Fresh build — no existing ingestion pipeline or transformation models for this source. Net-new data product, zero impact on existing models. The existing `raw_order_line_items` source and its downstream models (`stg_orders__order_line_items`, `fct_order_revenue`) are unrelated — they come from a different source system (order event stream).
 
 ## Approvals
+
+- [x] User approved design — 2026-08-03 07:22 UTC
